@@ -9,22 +9,25 @@ import { observer, inject } from "mobx-react";
 
 import Header from './header';
 
-@inject('Login') @observer
+@inject('home') @observer
 export default class Index extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.Login.fetchUser().then(resp => {
-      Object.defineProperty(window, '_USER', { value: resp.data });
-    });
+  async componentDidMount() {
+    const resp = await this.props.home.fetchUser();
+    this.props.home.changeAuthor(resp.data);
   }
 
   render() {
+    
+    const { author } = this.props.home;
+
     return (
       <div>
         <div>mobx demo</div>
+        <div>author: {author}</div>
         <Header {...this.props} />
       </div>
     )

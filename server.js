@@ -9,6 +9,7 @@ import url from 'url';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import path from 'path';
+import open_browser from 'child_process';
 
 import config from './webpack.config.babel';
 
@@ -62,5 +63,25 @@ const compiler = webpack(config);
 const server = new WebpackDevServer(compiler, dev_server_options);
 
 server.listen(dev_server_options.port, dev_server_options.host, () => {
+
+  const url = `http://${dev_server_options.host}:${dev_server_options.port}`
+  let cmd = '';
+  switch (process.platform) {
+    case 'wind32':
+      cmd = 'start';
+      break;
+
+    case 'linux':
+      cmd = 'xdg-open';
+      break;
+
+    case 'darwin':
+      cmd = 'open';
+      break;
+  }
+
+  open_browser.exec(`${cmd} ${url}`);
+
   console.log(`frontend server at http://${dev_server_options.host}:${dev_server_options.port}`);
+
 });

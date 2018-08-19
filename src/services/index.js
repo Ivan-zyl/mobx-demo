@@ -4,8 +4,8 @@
  * @createAt 2018/8/19
  */
 
-import HomepageService from './homepage';
+import HomeService from './home';
 
 export {
-  HomepageService
+  HomeService
 }
