@@ -3,8 +3,8 @@
  * @createAt 2018/8/19
  */
 
-import Login from './Login';
+import home from './home';
 
 export {
-  Login
+  home
 }

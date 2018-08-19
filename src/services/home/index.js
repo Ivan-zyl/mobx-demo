@@ -7,7 +7,7 @@
 import api from '../api'; 
 
 class Homepage{
-  getLogin(){
+  getUser(){
     return api.get('/api/getUser')
       .then(api.success)
       .catch(api.error);

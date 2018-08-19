@@ -14,15 +14,15 @@ export default class Header extends Component {
   }
 
   changeUsername = e => {
-    this.props.Login.changeUsername(e.target.value);
+    this.props.home.changeUsername(e.target.value);
   }
 
   changePassword = e => {
-    this.props.Login.changePassword(e.target.value);
+    this.props.home.changePassword(e.target.value);
   }
 
   render() {
-    const { username, password } = this.props.Login;
+    const { username, password } = this.props.home;
 
     return (
       <div>
